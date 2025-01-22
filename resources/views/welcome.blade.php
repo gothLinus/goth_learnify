@@ -1,3 +1,2 @@
-<x-layout>
-    welcome
+<x-layout :users="$users">
 </x-layout>

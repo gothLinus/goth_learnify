@@ -42,6 +42,6 @@ class AuthenticationController extends Controller
         $formFields['password'] = Hash::make($formFields['password']);
         $user = User::create($formFields);
         auth()->login($user);
-        return redirect('/')->with('User created and logged in!');
+        return redirect('/')->with('message','User created and logged in!');
     }
 }

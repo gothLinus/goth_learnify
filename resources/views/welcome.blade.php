@@ -1,4 +1,4 @@
-<x-layout :user="$user">
+<x-layout>
     @forelse($cards as $card)
         <x-card :card="$card"></x-card>
     @empty

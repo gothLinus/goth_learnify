@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,7 @@ Route::get('/login/{provider}', [AuthenticationController::class, 'providerRedir
 Route::get('/login/{provider}/callback', [AuthenticationController::class, 'providerCallback']);
 
 Route::get('/forgot-password', [UserController::class, 'forgotPassword'])->name('forgot-password');
+
+Route::get('/create/card', [CardController::class, 'create']);
+
+Route::post('/create/card', [CardController::class, 'store']);

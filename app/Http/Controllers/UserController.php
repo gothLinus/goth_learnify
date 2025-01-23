@@ -9,9 +9,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
-        $cards = $user->cards()->paginate(10);
-        return view('welcome', compact('user', 'cards'));
+        $cards = auth()->user()->cards()->paginate(10);
+        return view('welcome', compact('cards'));
     }
 
     public function logout(Request $request)

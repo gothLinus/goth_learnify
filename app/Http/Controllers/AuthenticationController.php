@@ -23,7 +23,8 @@ class AuthenticationController extends Controller
             'password' => 'required|string'
         ]);
         $loginField = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        if (auth()->attempt([$loginField => $request->login, 'password' => $request->password])) {
+        $remeber = $request->has('remember');
+        if (auth()->attempt([$loginField => $request->login, 'password' => $request->password], $remeber)) {
             $request->session()->regenerate();
             return redirect('/')->with('message', 'You are logged in!');
         }

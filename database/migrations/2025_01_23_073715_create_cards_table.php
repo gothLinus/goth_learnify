@@ -14,9 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->integer('timer');
+            $table->time('time');
+            $table->json('multiple_files')->nullable();
             $table->timestamps();
-
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnUpdate()

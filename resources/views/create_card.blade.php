@@ -41,15 +41,15 @@
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>
-
                     <div>
-                        <label for="timer" class="text-gray-800 text-sm sm:text-base mb-2 block">Timer</label>
+                        <label for="time" class="text-gray-800 text-sm sm:text-base mb-2 block">Select
+                            time:</label>
                         <div class="relative flex items-center">
-                            <input name="timer" type="time" required
+                            <input type="time" name="time"
                                    class="w-full text-gray-800 text-sm sm:text-base border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-                                   placeholder="Enter password" value="{{old('password')}}"/>
+                                   min="00:00" max="23:59" value="{{old('time')}}" required/>
                         </div>
-                        @error('timer')
+                        @error('time')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>

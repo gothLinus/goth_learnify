@@ -78,9 +78,14 @@
                         </li>
                         <li>
                             <a wire:navigate.hover href="#"
+                               x-data
+                               @click.prevent="$refs.createCard.submit()"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Create
                                 Card</a>
                         </li>
+                        <form x-ref="createCard" action="/create/card" method="get" style="display: none;">
+                            @csrf
+                        </form>
                         <li>
                             <a wire:navigate.hover href="#"
                                x-data

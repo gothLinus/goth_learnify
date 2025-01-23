@@ -14,7 +14,8 @@ class Card extends Model
     protected $fillable = [
         'description',
         'title',
-        'timer'
+        'time',
+        'multiple_files'
     ];
 
     public function user(): BelongsTo

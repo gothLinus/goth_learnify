@@ -33,8 +33,7 @@
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <!-- Logo Section -->
-            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse ">
-                <img src="/" class="h-8" alt=""/>
+            <a wire:navigate.hover href="/" class="flex items-center space-x-3 rtl:space-x-reverse ">
                 <span class="self-center text-2xl font-semibold whitespace-nowrap text-violet-600">Learnify</span>
             </a>
 
@@ -70,20 +69,20 @@
                     </div>
                     <ul class="py-2">
                         <li>
-                            <a href="#"
+                            <a wire:navigate.hover href="#"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a wire:navigate.hover href="#"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a wire:navigate.hover href="#"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Create
                                 Card</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a wire:navigate.hover href="#"
                                x-data
                                @click.prevent="$refs.logoutForm.submit()"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
@@ -103,16 +102,16 @@
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
                 <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a href="/"
+                        <a wire:navigate.hover href="/"
                            class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 hover:text-violet-500 hover:underline"
                            aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="https://github.com/gothLinus/goth_learnify"
+                        <a wire:navigate.hover href="https://github.com/gothLinus/goth_learnify"
                            class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 hover:text-violet-500 hover:underline">About</a>
                     </li>
                     <li>
-                        <a href="mailto:{{ config('contact.email') }}"
+                        <a wire:navigate.hover href="mailto:{{ config('contact.email') }}"
                            class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 hover:text-violet-500 hover:underline">Contact</a>
                     </li>
                 </ul>

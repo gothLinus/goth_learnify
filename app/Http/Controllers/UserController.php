@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $cards = auth()->user()->cards()->paginate(10);
+        $cards = auth()->user()->cards()->paginate(6);
         return view('welcome', compact('cards'));
     }
 

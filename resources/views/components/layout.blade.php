@@ -1,6 +1,6 @@
-@props(['users'])
-    <!DOCTYPE html>
-<html lang="en">
+@props(['user'])
+        <!DOCTYPE html>
+<html lang="en" class="">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -8,11 +8,11 @@
     <link rel="icon"
           href="https://avatars.githubusercontent.com/u/187384192?s=400&u=7bffeecfc46ba9535f8b1f432d983ab77f173e0b&v=4"/>
     <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
     />
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -50,7 +50,7 @@
                         aria-expanded="false">
                     <span class="sr-only">Open user menu</span>
                     <img class="w-8 h-8 rounded-full"
-                         src="{{ $users->profilePicture ? asset('storage/' . $users->profilePicture) : 'https://www.svgrepo.com/show/122119/user-image-with-black-background.svg' }}"
+                         src="{{ $user->profilePicture ? asset('storage/' . $user->profilePicture) : 'https://www.svgrepo.com/show/122119/user-image-with-black-background.svg' }}"
                          alt="">
                 </button>
 
@@ -66,8 +66,8 @@
                      style="display: none;"
                      class="absolute top-16 right-0 z-50 w-48 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
                     <div class="px-4 py-3">
-                        <span class="block text-sm text-gray-900 dark:text-white">{{$users->username}}</span>
-                        <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{$users->email}}</span>
+                        <span class="block text-sm text-gray-900 dark:text-white">{{$user->username}}</span>
+                        <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{$user->email}}</span>
                     </div>
                     <ul class="py-2">
                         <li>
@@ -85,9 +85,16 @@
                         </li>
                         <li>
                             <a href="#"
-                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                out</a>
+                               x-data
+                               @click.prevent="$refs.logoutForm.submit()"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                Sign out
+                            </a>
                         </li>
+
+                        <form x-ref="logoutForm" action="/users/logout" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </ul>
                 </div>
             </div>

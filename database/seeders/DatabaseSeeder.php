@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
 
         Card::factory(40)->for($user)->create([
             'title' => 'test',
-            'timer' => 1,
         ]);
     }
 }

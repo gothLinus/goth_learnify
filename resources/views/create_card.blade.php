@@ -3,7 +3,7 @@
         <div class="w-full max-w-sm sm:max-w-md lg:max-w-lg">
             <div class="p-6 sm:p-8 lg:p-10 rounded-2xl bg-white shadow-md">
                 <h2 class="text-gray-800 text-center text-2xl font-bold sm:text-3xl lg:text-4xl">Create Card</h2>
-                <form class="mt-6 sm:mt-8 space-y-4" method="post" action="/card/create">
+                <form class="mt-6 sm:mt-8 space-y-4" method="post" action="/card/create" enctype="multipart/form-data">
                     @csrf
                     <div>
                         <label for="title" class="text-gray-800 text-sm sm:text-base mb-2 block">Title</label>

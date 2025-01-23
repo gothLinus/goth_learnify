@@ -77,17 +77,17 @@
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
                         </li>
                         <li>
-                            <a wire:navigate.hover href="#"
+                            <a wire:navigate.hover href="/"
                                x-data
                                @click.prevent="$refs.createCard.submit()"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Create
                                 Card</a>
                         </li>
-                        <form x-ref="createCard" action="/create/card" method="get" style="display: none;">
+                        <form x-ref="createCard" action="/card/create" method="get" style="display: none;">
                             @csrf
                         </form>
                         <li>
-                            <a wire:navigate.hover href="#"
+                            <a wire:navigate.hover href="/"
                                x-data
                                @click.prevent="$refs.logoutForm.submit()"
                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
@@ -101,7 +101,6 @@
                     </ul>
                 </div>
             </div>
-
 
             <!-- Responsive Navigation -->
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">

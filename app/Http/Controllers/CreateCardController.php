@@ -16,7 +16,17 @@ class CreateCardController extends Controller
 
     public function store(CreateCardRequest $request)
     {
-        Card::create($request->validated());
-        return redirect('/')->with('success', 'Card created!');
+        dd($request);
+        $formFields = $request->validated();
+        if ($request->hasFile('multiple_files')) {
+            $filePaths = [];
+            foreach ($request->file('multiple_files') as $file) {
+                $filePaths[] = $file->store('cards', 'public');
+            }
+            $formFields['multiple_files'] = json_encode($filePaths);
+        }
+        $formFields['user_id'] = auth()->user()->id;
+        Card::create($formFields);
+        return redirect('/')->with('message', 'success, Card created!');
     }
 }

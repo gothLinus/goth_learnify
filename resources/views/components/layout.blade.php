@@ -7,11 +7,11 @@
     <link rel="icon"
           href="https://avatars.githubusercontent.com/u/187384192?s=400&u=7bffeecfc46ba9535f8b1f432d983ab77f173e0b&v=4"/>
     <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
     />
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -65,7 +65,8 @@
                      class="absolute top-16 right-0 z-50 w-48 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
                     <div class="px-4 py-3">
                         <span class="block text-sm text-gray-900 dark:text-white">{{auth()->user()->username}}</span>
-                        <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{auth()->user()->email}}</span>
+                        <span
+                            class="block text-sm text-gray-500 truncate dark:text-gray-400">{{auth()->user()->email}}</span>
                     </div>
                     <ul class="py-2">
                         <li>
@@ -111,7 +112,7 @@
                            aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a wire:navigate.hover href="https://github.com/gothLinus/goth_learnify"
+                        <a wire:navigate.hover target="_blank" href="https://github.com/gothLinus/goth_learnify"
                            class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 hover:text-violet-500 hover:underline">About</a>
                     </li>
                     <li>

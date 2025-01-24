@@ -35,7 +35,7 @@
                         <div class="relative flex items-center">
                             <input
                                 class="w-full text-gray-800 text-sm sm:text-base border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-                                name="multiple_files" type="file" multiple>
+                                name="multiple_files[]" type="file" accept="jpg,jpeg,png,pdf,docx,doc" multiple>
                         </div>
                         @error('multiple_files')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

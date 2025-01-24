@@ -1,20 +1,20 @@
 <?php
 
-use App\Http\Controllers\CreatecardController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'index'])->middleware('auth');
 
-Route::get('/login', [LoginController::class, 'login'])->middleware('guest')->name('login');
+Route::get('/login', [VerificationController::class, 'login'])->middleware('guest')->name('login');
 
-Route::post('/users/login', [LoginController::class, 'authenticate']);
+Route::post('/users/login', [VerificationController::class, 'authenticate']);
 
-Route::get('/register', [RegisterController::class, 'register'])->middleware('guest')->name('register');
+Route::get('/register', [VerificationController::class, 'register'])->middleware('guest')->name('register');
 
-Route::post('/users/register', [RegisterController::class, 'store']);
+Route::post('/users/register', [VerificationController::class, 'store']);
 
 Route::post('/users/logout', [UserController::class, 'logout'])->middleware('auth');
 
@@ -24,6 +24,10 @@ Route::get('/login/{provider}/callback', [RegisterController::class, 'providerCa
 
 Route::get('/forgot-password', [UserController::class, 'forgotPassword']);
 
-Route::get('/card/create', [CreateCardController::class, 'create']);
+Route::get('/card/create', [CardController::class, 'create']);
 
-Route::post('/card/create', [CreateCardController::class, 'store']);
+Route::post('/card/create', [CardController::class, 'store']);
+
+Route::get('/card/show/{card}', [CardController::class, 'show']);
+
+Route::delete('card/delete/{card}', [CardController::class, 'delete']);

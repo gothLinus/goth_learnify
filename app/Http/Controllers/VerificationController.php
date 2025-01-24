@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class VerificationController extends Controller
 {
     public function login()
     {
@@ -25,5 +28,20 @@ class LoginController extends Controller
             'login' => 'The provided credentials do not match our records.',
             'password' => 'The provided credentials do not match our records.',
         ]);
+    }
+
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function store(RegisterRequest $request)
+    {
+        $formFields = $request->validated();
+        $formFields['password'] = Hash::make($formFields['password']);
+        $user = User::create($formFields);
+        auth()->login($user);
+
+        return redirect('/')->with('message', 'User created and logged in!');
     }
 }

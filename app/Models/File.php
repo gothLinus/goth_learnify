@@ -10,6 +10,7 @@ class File extends Model
     protected $fillable = [
         'name',
         'path',
+        'card_id'
     ];
 
     public function card(): BelongsTo

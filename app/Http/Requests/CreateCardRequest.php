@@ -27,7 +27,7 @@ class CreateCardRequest extends FormRequest
             'time' => ['required', 'date_format:H:i'],
             'multiple_files' => 'nullable',
             'multiple_files.*' => ['file', 'mimes:jpg,jpeg,png,pdf', 'max:2048'],
-            'user_id' => ['required', 'exists:users,id'],
+            'user_id' => 'prohibited',
         ];
     }
 }

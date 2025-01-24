@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-
-
     public function register()
     {
         return view('register');
@@ -21,6 +19,7 @@ class RegisterController extends Controller
         $formFields['password'] = Hash::make($formFields['password']);
         $user = User::create($formFields);
         auth()->login($user);
+
         return redirect('/')->with('message', 'User created and logged in!');
     }
     /*

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Requests\CreateCardRequest;
-use App\Models\Card;
+use Illuminate\Support\Facades\DB;
 
 class CreateCardController extends Controller
 {
@@ -16,17 +15,21 @@ class CreateCardController extends Controller
 
     public function store(CreateCardRequest $request)
     {
-        dd($request);
-        $formFields = $request->validated();
-        if ($request->hasFile('multiple_files')) {
-            $filePaths = [];
-            foreach ($request->file('multiple_files') as $file) {
-                $filePaths[] = $file->store('cards', 'public');
+        DB::transaction(function () use ($request) {
+            $formFields = $request->validated();
+            $card = auth()->user()->cards()->create($formFields);
+
+            if ($request->hasFile('multiple_files')) {
+                foreach ($request->file('multiple_files') as $file) {
+                    $stored = $file->store('cards', 'public');
+                    $card->files()->create([
+                        'name' => $file->getClientOriginalName(),
+                        'path' => $stored,
+                    ]);
+                }
             }
-            $formFields['multiple_files'] = json_encode($filePaths);
-        }
-        $formFields['user_id'] = auth()->user()->id;
-        Card::create($formFields);
+        });
+
         return redirect('/')->with('message', 'success, Card created!');
     }
 }

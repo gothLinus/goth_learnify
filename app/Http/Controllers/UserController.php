@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -10,6 +9,7 @@ class UserController extends Controller
     public function index()
     {
         $cards = auth()->user()->cards()->paginate(6);
+
         return view('welcome', compact('cards'));
     }
 

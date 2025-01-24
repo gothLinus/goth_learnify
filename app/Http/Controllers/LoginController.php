@@ -17,6 +17,7 @@ class LoginController extends Controller
         $remember = $request->remember();
         if (auth()->attempt([$loginField => $request->login, 'password' => $request->password], $remember)) {
             $request->session()->regenerate();
+
             return redirect('/')->with('message', 'You are logged in!');
         }
 

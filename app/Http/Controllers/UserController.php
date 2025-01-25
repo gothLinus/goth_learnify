@@ -8,7 +8,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $cards = auth()->user()->cards()->paginate(6);
+        $cards = auth()->user()->cards()->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')->paginate(6);
 
         return view('welcome', compact('cards'));
     }

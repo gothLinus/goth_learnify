@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Card;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,10 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
+        $user = User::factory()->create([
             'username' => 'admin',
             'email' => 'linusnadig@gmail.com',
-            'password' => 'linusnadig',
+            'password' => 'admin',
+        ]);
+
+        Card::factory(40)->for($user)->create([
+            'title' => 'test',
         ]);
     }
 }

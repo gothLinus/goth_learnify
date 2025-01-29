@@ -91,7 +91,7 @@ class CardController extends Controller
                 }
             }
         });
-        return redirect('/')->with('success', 'Card updated successfully');
+        return redirect()->route('card.show', $card->id)->with('message', 'Card updated successfully');
     }
 
 

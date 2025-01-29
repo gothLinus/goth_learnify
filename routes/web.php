@@ -28,7 +28,7 @@ Route::get('/card/create', [CardController::class, 'create']);
 
 Route::post('/card/create', [CardController::class, 'store']);
 
-Route::get('/card/show/{card}', [CardController::class, 'show']);
+Route::get('/card/show/{card}', [CardController::class, 'show'])->name('card.show');
 
 Route::delete('card/delete/{card}', [CardController::class, 'delete']);
 

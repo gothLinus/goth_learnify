@@ -31,3 +31,7 @@ Route::post('/card/create', [CardController::class, 'store']);
 Route::get('/card/show/{card}', [CardController::class, 'show']);
 
 Route::delete('card/delete/{card}', [CardController::class, 'delete']);
+
+Route::get('/card/edit/{card}', [CardController::class, 'edit']);
+
+Route::put('/card/edit/{card}', [CardController::class, 'update']);

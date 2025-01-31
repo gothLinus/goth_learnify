@@ -13,6 +13,10 @@ class File extends Model
         'card_id'
     ];
 
+    protected $casts = [
+        'path' => 'array'
+    ];
+
     public function card(): BelongsTo
     {
         return $this->belongsTo(Card::class);

@@ -12,7 +12,7 @@ class CardController extends Controller
 {
     public function create()
     {
-        return view('create_card');
+        return view('card.create');
     }
 
     public function store(CardRequest $request)
@@ -42,7 +42,7 @@ class CardController extends Controller
 
     public function show(Card $card)
     {
-        return view('show_card', compact('card'));
+        return view('card.show', compact('card'));
     }
 
     public function delete(Card $card)
@@ -53,7 +53,7 @@ class CardController extends Controller
 
     public function edit(Card $card)
     {
-        return view('edit_card', compact('card'));
+        return view('card.edit', compact('card'));
     }
 
     public function update(CardRequest $request, Card $card)
@@ -79,8 +79,8 @@ class CardController extends Controller
                 }
             }
 
-            if ($request->has('deleted_files') && is_array($request->deleted_files)) {
-                foreach ($request->deleted_files as $deletedFileId) {
+            if ($request->has('files')) {
+                foreach ($request->files as $deletedFileId) {
                     $file = File::find($deletedFileId);
                     if ($file && $file->card_id == $card->id) {
 

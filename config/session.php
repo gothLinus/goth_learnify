@@ -32,7 +32,7 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 120),
+    'lifetime' => env('SESSION_LIFETIME', 1440),
 
     'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),
 
@@ -142,7 +142,7 @@ return [
     | your application, but you're free to change this when necessary.
     |
     */
-
+    'remember_lifetime' => 1440, // Lifetime in minutes (1440 minutes = 1 day)
     'path' => env('SESSION_PATH', '/'),
 
     /*

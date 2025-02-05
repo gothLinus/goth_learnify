@@ -67,4 +67,13 @@ class CollectionController extends Controller
             route('collections.show', $collection)
         );
     }
+
+    public function destroy(Collection $collection)
+    {
+        $collection->delete();
+
+        return redirect(
+            route('collections.index')
+        );
+    }
 }

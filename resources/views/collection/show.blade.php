@@ -11,10 +11,13 @@
     @endcan
 
     @can('delete', $collection)
-        <form action="{{ route('collections.destroy', $collection) }}">
+        <form
+            action="{{ route('collections.destroy', $collection) }}"
+            method="post"
+        >
             @csrf
             @method('DELETE')
-            <button wire:confirm="Are you sure?" type="submit">Delete</button>
+            <button type="submit">Delete</button>
         </form>
     @endcan
 </div>

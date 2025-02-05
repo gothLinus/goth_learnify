@@ -1,4 +1,12 @@
+@php
+    use App\Models\Collection;
+@endphp
+
 <div>
+    @can('create', Collection::class)
+        <a href="{{ route('collections.create') }}" wire:navigate.hover>New</a>
+    @endcan
+
     <ol>
         @foreach ($collections as $collection)
             <li>

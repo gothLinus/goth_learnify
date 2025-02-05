@@ -30,5 +30,7 @@ class DatabaseSeeder extends Seeder
             ->for($user)
             ->for($collection)
             ->create();
+
+        User::factory()->hasCollections(5)->create();
     }
 }

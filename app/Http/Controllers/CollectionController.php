@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CollectionRequest;
 use App\Models\Collection;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class CollectionController extends Controller
 {
+    use AuthorizesRequests;
+
+    public function __construct()
+    {
+        $this->authorizeResource(Collection::class, 'collection');
+    }
+
     public function index()
     {
         $collections = auth()->user()->collections;
@@ -19,8 +27,6 @@ class CollectionController extends Controller
 
     public function show(Collection $collection)
     {
-        abort_if($collection->user->isNot(auth()->user()), 403);
-
         return view(
             'collection.show',
             compact('collection')
@@ -36,8 +42,12 @@ class CollectionController extends Controller
     {
         $validated = $request->validated();
 
-        $collection = auth()->user()->collections()->create($validated);
+        $collection = auth()->user()
+            ->collections()
+            ->create($validated);
 
-        return redirect(route('collections.show', $collection));
+        return redirect(
+            route('collections.show', $collection)
+        );
     }
 }

@@ -16,7 +16,7 @@ class Card extends Model
         'description',
         'title',
         'time',
-        'collection_id'
+        'collection_id',
     ];
 
     public function user(): BelongsTo

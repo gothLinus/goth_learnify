@@ -25,7 +25,7 @@ class CardController extends Controller
                 foreach ($request['multiple_files'] as $file) {
                     $stored = $file->store('cards', 'public');
 
-                    if (!$stored) {
+                    if (! $stored) {
                         abort(500, 'Could not store file');
                     }
                     $card->files()->create([
@@ -39,7 +39,6 @@ class CardController extends Controller
         return redirect('/')->with('success', 'Card created successfully!');
     }
 
-
     public function show(Card $card)
     {
         return view('show_card', compact('card'));
@@ -48,6 +47,7 @@ class CardController extends Controller
     public function delete(Card $card)
     {
         $card->delete();
+
         return redirect('/')->with('message', 'success, Card deleted!');
     }
 
@@ -69,7 +69,7 @@ class CardController extends Controller
             if ($request->hasFile('multiple_files')) {
                 foreach ($request->file('multiple_files') as $file) {
                     $stored = $file->store('cards', 'public');
-                    if (!$stored) {
+                    if (! $stored) {
                         abort(500, 'Could not store file');
                     }
                     $card->files()->create([
@@ -91,8 +91,7 @@ class CardController extends Controller
                 }
             }
         });
+
         return redirect()->route('card.show', $card->id)->with('message', 'Card updated successfully');
     }
-
-
 }

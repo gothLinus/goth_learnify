@@ -58,4 +58,13 @@ class CollectionController extends Controller
             compact('collection')
         );
     }
+
+    public function update(Collection $collection, CollectionRequest $request)
+    {
+        $collection->update($request->validated());
+
+        return redirect(
+            route('collections.show', $collection)
+        );
+    }
 }

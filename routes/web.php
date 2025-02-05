@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
@@ -24,14 +25,13 @@ Route::get('/login/{provider}/callback', [RegisterController::class, 'providerCa
 
 Route::get('/forgot-password', [UserController::class, 'forgotPassword']);
 
-Route::get('/card/create', [CardController::class, 'create']);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/card/create', [CardController::class, 'create']);
+    Route::post('/card/create', [CardController::class, 'store']);
+    Route::get('/card/show/{card}', [CardController::class, 'show'])->name('card.show');
+    Route::delete('card/delete/{card}', [CardController::class, 'delete']);
+    Route::get('/card/edit/{card}', [CardController::class, 'edit']);
+    Route::put('/card/edit/{card}', [CardController::class, 'update']);
 
-Route::post('/card/create', [CardController::class, 'store']);
-
-Route::get('/card/show/{card}', [CardController::class, 'show'])->name('card.show');
-
-Route::delete('card/delete/{card}', [CardController::class, 'delete']);
-
-Route::get('/card/edit/{card}', [CardController::class, 'edit']);
-
-Route::put('/card/edit/{card}', [CardController::class, 'update']);
+    Route::resource('collections', CollectionController::class);
+});

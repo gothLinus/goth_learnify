@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Card;
+use App\Models\Collection;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -21,8 +22,13 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin',
         ]);
 
-        Card::factory(40)->for($user)->create([
-            'title' => 'test',
-        ]);
+        $collection = Collection::factory()
+            ->for($user)
+            ->create();
+
+        Card::factory(40)
+            ->for($user)
+            ->for($collection)
+            ->create();
     }
 }

@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CardRequest;
 use App\Models\Card;
 use App\Models\File;
+use App\Services\CollectionService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class CardController extends Controller
 {
+    public function __construct(private readonly CollectionService $collectionService) {}
+
     public function create()
     {
+        $collections = $this->collectionService->getReferences();
         return view('create_card');
     }
 
@@ -53,6 +57,7 @@ class CardController extends Controller
 
     public function edit(Card $card)
     {
+        $collections = $this->collectionService->getReferences();
         return view('edit_card', compact('card'));
     }
 

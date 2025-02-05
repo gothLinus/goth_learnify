@@ -28,6 +28,7 @@ class CardRequest extends FormRequest
             'multiple_files' => 'nullable',
             'multiple_files.*' => ['file', 'mimes:jpg,jpeg,png,pdf,docx,doc', 'max:2048'],
             'user_id' => 'prohibited',
+            'collection_id' => ['required', 'exists:App\Models\Collection']
         ];
     }
 }

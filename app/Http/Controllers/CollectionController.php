@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CollectionRequest;
 use App\Models\Collection;
 
 class CollectionController extends Controller
@@ -24,5 +25,19 @@ class CollectionController extends Controller
             'collection.show',
             compact('collection')
         );
+    }
+
+    public function create()
+    {
+        return view('collection.create');
+    }
+
+    public function store(CollectionRequest $request)
+    {
+        $validated = $request->validated();
+
+        $collection = auth()->user()->collections()->create($validated);
+
+        return redirect(route('collections.show', $collection));
     }
 }

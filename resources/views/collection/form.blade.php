@@ -1,16 +1,18 @@
 @props([
     'action',
+    'method',
     'collection',
 ])
 
 <div>
     <form action="{{ $action }}" method="POST">
         @csrf
+        @method($method)
 
         <label for="name">Name</label>
         <input
             name="name"
-            value="{{ old('name') || $collection?->name || '' }}"
+            value="{{ old('name', $collection?->name) }}"
             placeholder="Name"
         />
         @error('name')

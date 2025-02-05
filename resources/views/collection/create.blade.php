@@ -1,3 +1,11 @@
 <div>
-    @include('collection.form', ['action' => route('collections.store'), 'collection' => null])
+    @include(
+        'collection.form',
+        [
+            'action' => route('collections.store'),
+            'method' => 'POST',
+            'collection' => null,
+        ]
+    )
 </div>
+g

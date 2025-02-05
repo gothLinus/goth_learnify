@@ -50,4 +50,12 @@ class CollectionController extends Controller
             route('collections.show', $collection)
         );
     }
+
+    public function edit(Collection $collection)
+    {
+        return view(
+            'collection.edit',
+            compact('collection')
+        );
+    }
 }

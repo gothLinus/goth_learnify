@@ -17,7 +17,9 @@ class CollectionController extends Controller
 
     public function index()
     {
-        $collections = auth()->user()->collections;
+        $collections = auth()->user()
+            ->collections()
+            ->paginate();
 
         return view(
             'collection.index',
@@ -48,7 +50,7 @@ class CollectionController extends Controller
 
         return redirect(
             route('collections.show', $collection)
-        );
+        )->with('message', 'Collection created');
     }
 
     public function edit(Collection $collection)
@@ -65,7 +67,7 @@ class CollectionController extends Controller
 
         return redirect(
             route('collections.show', $collection)
-        );
+        )->with('message', 'Collection updated');
     }
 
     public function destroy(Collection $collection)
@@ -74,6 +76,6 @@ class CollectionController extends Controller
 
         return redirect(
             route('collections.index')
-        );
+        )->with('message', 'Collection deleted');
     }
 }

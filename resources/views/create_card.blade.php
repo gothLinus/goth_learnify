@@ -18,6 +18,14 @@
                 >
                     @csrf
 
+                    @include(
+                        'collection.select',
+                        [
+                            'collections' => $collections,
+                            'selected_id' => null,
+                        ]
+                    )
+
                     <div>
                         <label
                             for="title"

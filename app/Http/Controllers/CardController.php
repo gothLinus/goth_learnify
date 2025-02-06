@@ -16,7 +16,7 @@ class CardController extends Controller
     public function create()
     {
         $collections = $this->collectionService->getReferences();
-        return view('create_card');
+        return view('create_card', compact('collections'));
     }
 
     public function store(CardRequest $request)
@@ -58,7 +58,7 @@ class CardController extends Controller
     public function edit(Card $card)
     {
         $collections = $this->collectionService->getReferences();
-        return view('edit_card', compact('card'));
+        return view('edit_card', compact('card', 'collections'));
     }
 
     public function update(CardRequest $request, Card $card)

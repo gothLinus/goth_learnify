@@ -41,16 +41,14 @@
                         <input type="file" name="multiple_files[]" multiple
                                accept="image/jpeg,image/png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                                class="w-full text-gray-800 dark:text-white dark:bg-gray-700 text-sm sm:text-base border border-gray-300 dark:border-gray-600 px-4 py-3 rounded-md outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
-                               x-ref="fileInput" @change="addNewFiles">
+                               x-ref="fileInput" @change="addFiles">
                         @error('multiple_files')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <!-- File Previews -->
-                    <input type="hidden" name="deleted_files" :value="JSON.stringify(deletedFiles)">
                     <div class="mt-4 flex flex-wrap gap-2">
-                        <template x-for="(file, index) in allFiles" :key="index">
+                        <template x-for="(file, index) in files" :key="index">
                             <div class="relative">
                                 <div class="file-preview-item p-2 border rounded-lg dark:border-gray-600">
                                     <template x-if="file.isImage">
@@ -92,40 +90,7 @@
             </div>
         </div>
     </div>
-    <script>
-        function fileHandler() {
-            return {
-                allFiles: @json($card->files->map(function($file) {
-            return [
-                'name' => $file->name,
-                'preview' => asset("storage/{$file->path}"),
-            ];
-        })),
 
-                deletedFiles: [],
-
-                addNewFiles( event ) {
-                    const newFiles = Array.from(event.target.files).map(file => ({
-                        name: file.name,
-                        preview: URL.createObjectURL(file),
-                        isImage: file.type.startsWith('image/'),
-                        fileObject: file
-                    }));
-
-                    this.allFiles.push(...newFiles); // Allow adding one or multiple files
-                    event.target.value = ''; // Reset input for new uploads
-                },
-
-                removeFile( index ) {
-                    const file = this.allFiles[index];
-                    if (file.id) {
-                        this.deletedFiles.push(file.id); // Track deleted files for backend
-                    }
-                    this.allFiles.splice(index, 1);
-                }
-            }
-        }
-    </script>
     <script>
         function fileHandler() {
             return {

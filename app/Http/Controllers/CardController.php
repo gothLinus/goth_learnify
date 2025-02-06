@@ -69,11 +69,8 @@ class CardController extends Controller
     {
         DB::transaction(function () use ($request, $card) {
 
-            $card->update([
-                'title' => $request->input('title'),
-                'description' => $request->input('description'),
-                'time' => $request->input('time'),
-            ]);
+            $validated = $request->validated();
+            $card->update($validated);
 
             if ($request->hasFile('multiple_files')) {
                 foreach ($request->file('multiple_files') as $file) {

@@ -25,10 +25,10 @@ class CardRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'time' => ['required', 'date_format:H:i'],
-            'multiple_files' => 'nullable',
-            'multiple_files.*' => ['file', 'mimes:jpg,jpeg,png,pdf,docx,doc', 'max:2048'],
+            'multiple_files' => 'nullable|sometimes|bail',
+            'multiple_files.*' => ['nullable', 'sometimes', 'bail', 'file', 'mimes:jpg,jpeg,png,pdf,docx,doc', 'max:2048'],
             'user_id' => 'prohibited',
-            'collection_id' => ['required', 'exists:App\Models\Collection']
+            'collection_id' => ['required', 'exists:collections,id']
         ];
     }
 }

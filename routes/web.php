@@ -26,8 +26,8 @@ Route::get('/login/{provider}/callback', [RegisterController::class, 'providerCa
 Route::get('/forgot-password', [UserController::class, 'forgotPassword']);
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::post('/card/create', [CardController::class, 'store'])->name('card.store');
     Route::get('/card/create', [CardController::class, 'create']);
-    Route::post('/card/create', [CardController::class, 'store']);
     Route::get('/card/show/{card}', [CardController::class, 'show'])->name('card.show');
     Route::delete('card/delete/{card}', [CardController::class, 'delete']);
     Route::get('/card/edit/{card}', [CardController::class, 'edit']);

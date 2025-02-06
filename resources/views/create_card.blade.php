@@ -12,8 +12,8 @@
                 </h2>
                 <form
                     class="mt-6 sm:mt-8 space-y-4"
-                    method="post"
-                    action="/card/create"
+                    method="POST"
+                    action="{{ route('card.store') }}"
                     enctype="multipart/form-data"
                 >
                     @csrf

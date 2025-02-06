@@ -21,7 +21,7 @@ class CardController extends Controller
 
     public function store(CardRequest $request)
     {
-        DB::transaction(function () use ($request) {
+        $card = DB::transaction(function () use ($request) {
             $formFields = $request->validated();
             $card = auth()->user()->cards()->create($formFields);
 
@@ -38,9 +38,13 @@ class CardController extends Controller
                     ]);
                 }
             }
+
+            return $card;
         });
 
-        return redirect('/')->with('success', 'Card created successfully!');
+        return redirect(
+            route('card.show', $card)
+        )->with('success', 'Card created successfully!');
     }
 
     public function show(Card $card)

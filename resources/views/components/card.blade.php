@@ -1,10 +1,10 @@
 <div
     class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700">
-    <a wire:navigate.hover href="/show/card">
-        <h5 class="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
-            {{ $card->title }}
-        </h5>
-    </a>
+    <p>
+    <h5 class="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">
+        {{ $card->title }}
+    </h5>
+    </p>
     <p class="mb-4 font-normal text-gray-700 dark:text-gray-400">
         {{ $card->description }}
     </p>

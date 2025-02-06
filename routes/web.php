@@ -25,7 +25,7 @@ Route::get('/forgot-password', [UserController::class, 'forgotPassword']);
 
 Route::get('/card/create', [CardController::class, 'create'])->middleware('auth');
 
-Route::post('/card/create', [CardController::class, 'save'])->middleware('auth');
+Route::post('/card/create', [CardController::class, 'store'])->middleware('auth');
 
 Route::get('/card/show/{card}', [CardController::class, 'show'])->middleware('auth')->name('card.show');
 

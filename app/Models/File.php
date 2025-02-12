@@ -13,8 +13,15 @@ class File extends Model
         'card_id',
     ];
 
+    protected $appends = ['url'];
+
     public function card(): BelongsTo
     {
         return $this->belongsTo(Card::class);
+    }
+
+    public function getUrlAttribute()
+    {
+        return asset('storage/' . $this->path);
     }
 }

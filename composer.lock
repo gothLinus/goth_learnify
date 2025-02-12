@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ffea0d1271015496faf3d557e3d2fb67",
-    "packages": [
+    "content-hash": "9562029dc396903a6ba37e89af742ed0",
+ "packages": [
         {
             "name": "brick/math",
             "version": "0.12.1",
@@ -21,7 +21,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": "^8.1"
+                "php": "^8.3"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.2",
@@ -1524,6 +1524,75 @@
             "time": "2025-01-17T15:17:00+00:00"
         },
         {
+            "name": "laravel/telescope",
+            "version": "v5.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/telescope.git",
+                "reference": "bc3df85f1d5653c9473f1f858c98309345ebd1ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/bc3df85f1d5653c9473f1f858c98309345ebd1ca",
+                "reference": "bc3df85f1d5653c9473f1f858c98309345ebd1ca",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "^8.37|^9.0|^10.0|^11.0",
+                "php": "^8.0",
+                "symfony/console": "^5.3|^6.0|^7.0",
+                "symfony/var-dumper": "^5.0|^6.0|^7.0"
+            },
+            "require-dev": {
+                "ext-gd": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "laravel/octane": "^1.4|^2.0|dev-develop",
+                "orchestra/testbench": "^6.40|^7.37|^8.17|^9.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.0|^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Telescope\\TelescopeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Telescope\\": "src/",
+                    "Laravel\\Telescope\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Mohamed Said",
+                    "email": "mohamed@laravel.com"
+                }
+            ],
+            "description": "An elegant debug assistant for the Laravel framework.",
+            "keywords": [
+                "debugging",
+                "laravel",
+                "monitoring"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/telescope/issues",
+                "source": "https://github.com/laravel/telescope/tree/v5.4.0"
+            },
+            "time": "2025-01-24T15:55:16+00:00"
+        },
+        {
             "name": "laravel/tinker",
             "version": "v2.10.0",
             "source": {
@@ -2218,16 +2287,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.5.18",
+            "version": "v3.5.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "62f0fa6b340a467c25baa590a567d9a134b357da"
+                "reference": "3f1b2c134cde537bb7666e490ea21a8ffc8bbf14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/62f0fa6b340a467c25baa590a567d9a134b357da",
-                "reference": "62f0fa6b340a467c25baa590a567d9a134b357da",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/3f1b2c134cde537bb7666e490ea21a8ffc8bbf14",
+                "reference": "3f1b2c134cde537bb7666e490ea21a8ffc8bbf14",
                 "shasum": ""
             },
             "require": {
@@ -2282,7 +2351,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.5.18"
+                "source": "https://github.com/livewire/livewire/tree/v3.5.19"
             },
             "funding": [
                 {
@@ -2290,7 +2359,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-23T15:05:02+00:00"
+            "time": "2025-01-28T21:39:51+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -9531,7 +9600,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.2"
+        "php": "^8.4"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"

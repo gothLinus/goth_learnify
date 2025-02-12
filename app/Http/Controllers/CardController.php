@@ -29,7 +29,7 @@ class CardController extends Controller
                 foreach ($request['multiple_files'] as $file) {
                     $stored = $file->store('cards', 'public');
 
-                    if (! $stored) {
+                    if (!$stored) {
                         abort(500, 'Could not store file');
                     }
                     $card->files()->create([
@@ -42,10 +42,9 @@ class CardController extends Controller
             return $card;
         });
 
-        return redirect(
-            route('card.show', $card)
-        )->with('success', 'Card created successfully!');
+        return redirect()->route('card.show', $card->id)->with('message', 'Card created successfully!');
     }
+
 
     public function show(Card $card)
     {
@@ -56,7 +55,7 @@ class CardController extends Controller
     {
         $card->delete();
 
-        return redirect('/')->with('message', 'success, Card deleted!');
+        return redirect()->route('index')->with('message', 'success, Card deleted!');
     }
 
     public function edit(Card $card)
@@ -75,7 +74,8 @@ class CardController extends Controller
             if ($request->hasFile('multiple_files')) {
                 foreach ($request->file('multiple_files') as $file) {
                     $stored = $file->store('cards', 'public');
-                    if (! $stored) {
+
+                    if (!$stored) {
                         abort(500, 'Could not store file');
                     }
                     $card->files()->create([
@@ -85,14 +85,14 @@ class CardController extends Controller
                 }
             }
 
-            if ($request->has('deleted_files') && is_array($request->deleted_files)) {
-                foreach ($request->deleted_files as $deletedFileId) {
-                    $file = File::find($deletedFileId);
-                    if ($file && $file->card_id == $card->id) {
+            if ($request->filled('deleted_files')) {
+                $deletedFileIds = json_decode($request->input('deleted_files'), true);
 
-                        $file->delete();
-
+                foreach ($deletedFileIds as $deletedFileId) {
+                    $file = $card->files()->find($deletedFileId);
+                    if ($file) {
                         Storage::disk('public')->delete($file->path);
+                        $file->delete();
                     }
                 }
             }
@@ -100,4 +100,6 @@ class CardController extends Controller
 
         return redirect()->route('card.show', $card->id)->with('message', 'Card updated successfully');
     }
+
+
 }

@@ -11,7 +11,7 @@
             </h1>
         </div>
     @else
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-5 px-3">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5 px-3">
             @foreach($cards as $card)
                 <x-card :card="$card"></x-card>
             @endforeach

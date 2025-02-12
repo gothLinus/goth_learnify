@@ -19,7 +19,7 @@ class CardFactory extends Factory
         return [
             'title' => fake()->title(),
             'description' => fake()->realText(10),
-            'timer' => fake()->time,
+            'time' => fake()->time(),
         ];
     }
 }

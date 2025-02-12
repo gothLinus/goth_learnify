@@ -16,7 +16,7 @@ class CardController extends Controller
 
     public function store(CardRequest $request)
     {
-        DB::transaction(function () use ($request) {
+        $card = DB::transaction(function () use ($request) {
             $formFields = $request->validated();
             $card = auth()->user()->cards()->create($formFields);
 
@@ -33,9 +33,10 @@ class CardController extends Controller
                     ]);
                 }
             }
+            return $card;
         });
 
-        return redirect('/')->with('success', 'Card created successfully!');
+        return redirect()->route('card.show', $card->id)->with('message', 'Card created successfully!');
     }
 
 
@@ -47,7 +48,7 @@ class CardController extends Controller
     public function delete(Card $card)
     {
         $card->delete();
-        return redirect('/')->with('message', 'success, Card deleted!');
+        return redirect()->route('index')->with('message', 'success, Card deleted!');
     }
 
     public function edit(Card $card)
@@ -64,7 +65,6 @@ class CardController extends Controller
                 'time' => $request->input('time'),
             ]);
 
-            // Handle New File Uploads
             if ($request->hasFile('multiple_files')) {
                 foreach ($request->file('multiple_files') as $file) {
                     $stored = $file->store('cards', 'public');
@@ -80,7 +80,6 @@ class CardController extends Controller
                 }
             }
 
-            // Handle File Deletions
             if ($request->filled('deleted_files')) {
                 $deletedFileIds = json_decode($request->input('deleted_files'), true);
 

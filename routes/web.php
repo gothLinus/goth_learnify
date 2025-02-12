@@ -5,7 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [UserController::class, 'index'])->middleware('auth');
+Route::get('/', [UserController::class, 'index'])->middleware('auth')->name('index');
 
 Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('login');
 

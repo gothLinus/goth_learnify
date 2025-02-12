@@ -24,7 +24,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login')->with('message', 'You have been logged out!');
+        return redirect()->route('login')->with('message', 'You have been logged out!');
     }
 
     public function forgotPassword()
@@ -44,7 +44,7 @@ class UserController extends Controller
         if (auth()->attempt([$loginField => $request->login, 'password' => $request->password], $remember)) {
             $request->session()->regenerate();
 
-            return redirect('/')->with('message', 'You are logged in!');
+            return redirect()->route('index')->with('message', 'You are logged in!');
         }
 
         return back()->withErrors([
@@ -65,7 +65,7 @@ class UserController extends Controller
         $user = User::create($formFields);
         auth()->login($user);
 
-        return redirect('/')->with('message', 'User created and logged in!');
+        return redirect()->route('index')->with('message', 'User created and logged in!');
     }
 
     public function settings()

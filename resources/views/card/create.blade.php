@@ -24,7 +24,7 @@
                         <label
                             class="text-gray-800 dark:text-gray-200 text-sm sm:text-base mb-2 block">Description</label>
                         <textarea name="description" rows="4" required
-                                  class="w-full text-gray-800 dark:text-white dark:bg-gray-700 text-sm sm:text-base border border-gray-300 dark:border-gray-600 px-4 py-3 rounded-md outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+                                  class="h-12 w-full text-gray-800 dark:text-white dark:bg-gray-700 text-sm sm:text-base border border-gray-300 dark:border-gray-600 px-4 py-3 rounded-md outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
                                   placeholder="Enter Card Description">{{ old('description') }}</textarea>
                         @error('description')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

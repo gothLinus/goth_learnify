@@ -75,7 +75,7 @@
                         <input id="terms" name="terms" type="checkbox"
                                class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"/>
                         <label for="terms" class="text-gray-700 dark:text-gray-300 ml-3 block text-sm">
-                            I accept the <a href="javascript:void(0);"
+                            I accept the <a href="#"
                                             class="text-blue-600 dark:text-blue-400 font-semibold hover:underline ml-1">Terms
                                 and Conditions</a>
                         </label>
@@ -88,7 +88,7 @@
                         </button>
                     </div>
                     <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base !mt-8 text-center">Already have an
-                        account? <a href="/login"
+                        account? <a href="{{ route('login') }}"
                                     class="text-blue-600 dark:text-blue-400 font-semibold hover:underline ml-1">Login
                             here</a></p>
                 </form>

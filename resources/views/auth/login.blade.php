@@ -57,7 +57,7 @@
                             </label>
                         </div>
                         <div class="text-sm sm:text-base">
-                            <a href="/forgot-password"
+                            <a href="{{ route('forgot-password') }}"
                                class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
                                 Forgot your password?
                             </a>
@@ -72,7 +72,7 @@
                     </div>
                     <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base !mt-8 text-center">Don't have an
                         account? <a
-                            href="/register"
+                            href="{{ route('register') }}"
                             class="text-blue-600 dark:text-blue-400 hover:underline ml-1 whitespace-nowrap font-semibold">Register
                             here</a></p>
                 </form>

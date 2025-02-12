@@ -10,7 +10,7 @@ class File extends Model
     protected $fillable = [
         'name',
         'path',
-        'card_id'
+        'card_id',
     ];
 
     protected $appends = ['url'];

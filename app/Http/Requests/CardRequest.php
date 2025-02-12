@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CardRequest extends FormRequest
 {
@@ -25,9 +26,10 @@ class CardRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'time' => ['required', 'date_format:H:i'],
-            'multiple_files' => 'nullable',
-            'multiple_files.*' => ['file', 'mimes:jpg,jpeg,png,pdf,docx,doc', 'max:2048'],
+            'multiple_files' => 'nullable|sometimes|bail',
+            'multiple_files.*' => ['nullable', 'sometimes', 'bail', 'file', 'mimes:jpg,jpeg,png,pdf,docx,doc', 'max:2048'],
             'user_id' => 'prohibited',
+            'collection_id' => ['required', Rule::exists('collections', 'id')]
         ];
     }
 }

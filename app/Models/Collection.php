@@ -7,16 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Card extends Model
+class Collection extends Model
 {
-    /** @use HasFactory<\Database\Factories\CardFactory> */
+    /** @use HasFactory<\Database\Factories\CollectionFactory> */
     use HasFactory;
 
     protected $fillable = [
-        'description',
-        'title',
-        'time',
-        'collection_id',
+        'user_id',
+        'name',
     ];
 
     public function user(): BelongsTo
@@ -24,13 +22,8 @@ class Card extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function files(): HasMany
+    public function cards(): HasMany
     {
-        return $this->hasMany(File::class);
-    }
-
-    public function collection(): BelongsTo
-    {
-        return $this->belongsTo(Collection::class);
+        return $this->hasMany(Card::class);
     }
 }

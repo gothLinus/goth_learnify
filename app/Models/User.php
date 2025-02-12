@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Card::class);
     }
+
+    public function collections(): HasMany
+    {
+        return $this->hasMany(Collection::class, 'user_id');
+    }
 }

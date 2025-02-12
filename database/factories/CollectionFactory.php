@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Card>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Collection>
  */
-class CardFactory extends Factory
+class CollectionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,10 +16,10 @@ class CardFactory extends Factory
      */
     public function definition(): array
     {
+        $name = $this->faker->sentence(3);
+
         return [
-            'title' => fake()->title(),
-            'description' => fake()->realText(10),
-            'time' => fake()->time,
+            'name' => $name,
         ];
     }
 }
